@@ -161,7 +161,6 @@ function StartTimerLine(time){
       }
 }
 }
-
 // When Submit Button is Clicked
 submit.addEventListener("click" , ()=>{
     screen3.style.display = "none";
