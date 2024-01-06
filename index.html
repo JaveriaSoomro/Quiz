@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qiuz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .option{
+            border: 1px solid slategray;
+            padding: 12px;
+            cursor: pointer;
+            margin: 4px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .option:hover{
+            background-color: rgb(129, 153, 177);
+            font-weight: bold;
+        }
+
+        .option-correct{
+            background-color: rgb(108, 214, 108);
+        }
+        .option-wrong{
+            background-color: rgb(218, 106, 106);
+        }
+        .disabled{
+            pointer-events: none;
+        }
+        .answer{
+            font-family: sans-serif;
+            font-size: 100px;
+            padding: 10px;
+        }
+        .timeLine{
+            background-color: blanchedalmond;
+            height: 2px;
+            margin-left: 16px;
+
+        }
+    </style>
+</head>
+<body class="bg-slate-400 text-white font-sans">
+    <div class="container w-10/12 flex content-center items-center">
+
+        <!-- Screen 1 -->
+        <div class="screen1 absolute top-[42%] left-[43%] w-1/4" id="screen1">
+               <div class="start-btn">
+                <button class="bg-slate-900 border-white border-2 outline-none rounded-lg p-4 text-2xl transition-all ease-in duration-150 hover:bg-transparent" id="start-btn">Start Quiz</button>
+               </div>
+        </div> 
+
+        <!-- Screen 2 -->
+        <div class="screen2 absolute top-[22%] left-[30%] hidden" id="screen2">
+         <div class="info-box bg-slate-900 rounded-2xl p-5">
+            <div class="info-title font-bold text-3xl pt-4 flex items-center justify-center"><span>Some Rules of this Quiz</span></div>
+            <div class="info-list p-14 pt-5 text-slate-300">
+                <div class="info">1. You will have only <span class="text-white font-bold">15 seconds</span> per each question.</div>
+                <div class="info">2. Once you select your answer, it can't be undone.</div>
+                <div class="info">3. You can't select any option once time goes off.</div>
+                <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+                <div class="info">5. You'll get points on the basis of your correct answers.</div>
+            </div>
+            <div class="buttons flex justify-end gap-3">
+               <button class="quit bg-transparent border-2 p-3 rounded-xl hover:bg-slate-600" id="quit">Exit Quiz</button>
+               <button class="Cotinue bg-transparent border-2 p-3 rounded-xl hover:bg-slate-600" id="continue">Continue</button>
+           </div>
+         </div>
+        </div>
+
+       <!-- Screen 3 -->
+        <div class="screen3 absolute top-[12%] left-[25%] bg-slate-900 rounded-2xl p-5 w-1/2 hidden" id="screen3">
+
+        <header class="header flex justify-between p-3">
+
+            <h1 class="app-heading font-bold text-2xl">Quiz!</h1>
+
+            <div class="timer bg-transparent p-3 cursor-pointer " id="timer">
+          <!-- <div class="timer-sec ml-2 font-bold" id="timer-sec"></div> -->
+            </div>
+        </header>
+        <div class="timeLine" id="timeLine">
+            <!-- <div class="time-bar w-[37rem] h-1 bg-white rounded-xl" id="time-bar"></div> -->
+        </div>
+        <section id="query">
+          
+        </section>
+        <footer class="footer flex justify-between p-2 m-3">
+            <div class="total-que bg-transparent p-3 cursor-pointer" id="total-que">
+                <!-- 1 out of 5 -->
+            </div>
+            <button class="next_btn bg-transparent border-2 p-3 rounded-xl hover:bg-slate-600 z-10 hidden" id="next">Next Question</button>
+            <button class="submit_btn bg-transparent border-2 p-3 rounded-xl hover:bg-slate-600 hidden" id="submit">Submit Quiz</button>
+        </footer>
+        </div>
+
+
+        <!-- Screen 4 -->
+        <div class="screen4 absolute top-[20%] left-[25%] bg-slate-900 rounded-2xl p-5 w-1/2 hidden z-20" id="screen4">
+            <div class="result_box flex items-center flex-col p-10">
+                <div class="icon p-4">
+                    <i class="fas fa-crown fa-2xl"></i>
+                </div>
+                <div class="complete_text p-4 font-bold text-xl">You've completed the Quiz!</div>
+                <div class="score_text p-4" id="score_text">
+                    <!-- Here I've inserted Score Result from JavaScript -->
+                </div>
+                <div class="buttons p-4">
+                    <button class="restart bg-transparent border-2 p-3 rounded-xl hover:bg-slate-600 mx-4" id="replay" onclick="replayQuiz()">Replay Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
